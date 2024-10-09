@@ -1,0 +1,37 @@
+﻿@{
+
+    E_Book_eproject.Models.EProjectContext db = new E_Book_eproject.Models.EProjectContext();
+}
+@* <div class="properties__button" >
+    <!--Nav Button  -->
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a role="tablist" role="tab" aria-controls="nav-home" aria-selected="true" asp-action="shop" asp-controller="Home">All</a>
+
+            @foreach (var sub in db.SubCategories.ToList())
+            {
+
+                <a class="nav-item nav-link" id="nav-profile-tab" asp-action="shop" asp-controller="Home"
+                   asp-route-catid="@sub.Id" role="tab" aria-controls="nav-profile" aria-selected="false">@sub.Name</a>
+            }
+
+
+        </div>
+    </nav>
+    </div> *@
+
+ <div class="properties__button">
+    <!--Dropdown Button-->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a asp-action="shop" asp-controller="Home">ALl</a>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+             <a class="dropdown-item" asp-action="shop" asp-controller="Home">All</a>
+            @foreach (var sub in db.SubCategories.ToList())
+            {
+                <a class="dropdown-item" asp-action="shop" asp-controller="Home" asp-route-catid="@sub.Id">@sub.Name</a>
+            }
+        </div>
+    </div>
+</div>
